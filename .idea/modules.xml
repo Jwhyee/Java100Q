@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/java100q.iml" filepath="$PROJECT_DIR$/java100q.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java100Q.iml" filepath="$PROJECT_DIR$/Java100Q.iml" />
     </modules>
   </component>
 </project>
