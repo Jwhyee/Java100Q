@@ -1,7 +1,5 @@
 package programmers.lv1;
 
-import java.util.Arrays;
-
 public class FailureRate {
     public static int[] solution(int N, int[] stages) {
         /*
@@ -13,7 +11,7 @@ public class FailureRate {
         int[] answer = new int[N];
         // 정답을 저장하는 배열
         int[] check = new int[N];
-        // 몇 명이 해당 스테이지를 통과했는지 저장하는 배열
+        // 몇 명이 해당 스테이지에 멈춰있는지를 저장하는 배열
         double[] failure = new double[N];
         // 실패율을 저장하는 배열
 
@@ -56,6 +54,5 @@ public class FailureRate {
     public static void main(String[] args) {
         int N = 5;
         int[] stages = {2, 1, 2, 6, 2, 4, 3, 3};
-        System.out.println(Arrays.toString(solution(N, stages)));
     }
 }
