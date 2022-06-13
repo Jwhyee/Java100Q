@@ -137,5 +137,8 @@ public class TestCode {
         for (int i = 0; i < intArray[0].length; i++) {
             System.out.print((i + 1) + "분기 합 : " + quarterSum[i] + ", ");
         }*/
+        System.out.print("asdf");
+        System.out.print("\n");
+        System.out.print("asdf");
     }
 }
