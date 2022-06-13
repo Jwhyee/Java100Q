@@ -9,21 +9,21 @@ public class TestCode {
         System.out.println(10==9);*/
 
         // 8번 문제
-        //byte var = 0; int num = 0; double real = 0;
-        //real = num;
-        //real = var;
-        //num = (int) var;
-        //var = num;
-        //num = (int)0.1;
+//        byte var = 0; int num = 0; double real = 0;
+//        real = num;
+//        real = var;
+//        num = (int) var;
+//        var = num;
+//        num = (int)0.1;
 
         // 9번 문제
         /*final double PI = 3.14;
         int x = 50;
-        double y = 15;*/
-        //y = ++x + PI;
-        //x = y + PI;
-        //PI = y;
-        //y = PI++;
+        double y = 15;
+        y = ++x + PI;
+        x = y + PI;
+        PI = y;
+        y = PI++;*/
 
         // 10번 문제
         /*int a = 5, b;
@@ -34,7 +34,7 @@ public class TestCode {
 
         // 11번 문제
         /*double radius = 2.0;
-        double ballVolume = (4 / 3) * radius * radius * radius * 3.1;
+        double ballVolume = (4.0/3.0) * radius * radius * radius * 3.1;
 
         System.out.println(ballVolume);*/
 
@@ -57,7 +57,7 @@ public class TestCode {
         System.out.println(s);*/
 
         // 14번 문제
-        //int numbers[3] = {1, 3, 7};
+//        int numbers[3] = {1, 3, 7};
         //int numbers[] = {1, 3, 7};
         //int numbers[] = new int[3];
         //int[] numbers = new int[5];
