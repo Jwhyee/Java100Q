@@ -1,6 +1,6 @@
-import java.util.Scanner;
+package main.likelion;
 
-public class TestCode {
+public class Main {
     public static void main(String[] args) {
 
     }
