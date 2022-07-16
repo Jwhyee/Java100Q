@@ -39,7 +39,6 @@ public class ParkingFee {
         }
     }
     public static int[] solution(int[] fees, String[] records) {
-        int[] answer = {};
         for (String record : records) {
             StringTokenizer st = new StringTokenizer(record, " ");
             String parkingTime = st.nextToken();
@@ -71,7 +70,14 @@ public class ParkingFee {
         }
 
         System.out.println("answerMap = " + answerMap);
-
+        List<String> keySet = new ArrayList<>(answerMap.keySet());
+        Collections.sort(keySet);
+        int[] answer = new int[keySet.size()];
+        int i = 0;
+        for (String carNum : keySet) {
+            answer[i] = answerMap.get(carNum);
+            i++;
+        }
         return answer;
     }
 
