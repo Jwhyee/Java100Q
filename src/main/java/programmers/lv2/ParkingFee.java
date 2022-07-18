@@ -33,7 +33,7 @@ public class ParkingFee {
     }
     public static int getTimeSum(String inTime, String outTime) {
         // 출차 시간 - 입차 시간을 분단위로 환산
-        // 05:34, 07:59
+        // 05:59, 07:34
         String[] inTimeArr = inTime.split(":");
         String[] outTimeArr = outTime.split(":");
         int hourSum = (Integer.parseInt(outTimeArr[0]) - Integer.parseInt(inTimeArr[0])) * 60;
@@ -48,13 +48,7 @@ public class ParkingFee {
             // 누적 주차 시간이 기본 시간 이하라면 기본요금만 청구
             return defaultCost;
         } else {
-            int timeDiffPerMinute = (timeSum - defaultTime) / perMinute;
-            if ((timeSum - defaultTime) % perMinute == 0) {
-                // 문제 중 [a] 과정이 단위 시간으로 나누어 떨어지지 않으면 올림 처리
-                return defaultCost + (timeDiffPerMinute * perCost);
-            } else {
-                return defaultCost + ((timeDiffPerMinute + 1) * perCost);
-            }
+            return (int) (defaultCost + (Math.ceil((timeSum - defaultTime) / (float)perMinute) * perCost));
         }
     }
     public static int[] solution(int[] fees, String[] records) {
@@ -66,6 +60,7 @@ public class ParkingFee {
             String parkingStatus = st.nextToken();
             addData(carNum, parkingTime, parkingStatus);
         }
+
         // 만약 입차 기록만 있고, 출차 기록이 없는게 존재한다면 아래 로직 진행
         if (parkingMap.size() != 0) {
             // addData OUT 부분만 다시 실행
