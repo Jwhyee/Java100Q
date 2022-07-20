@@ -1,4 +1,4 @@
-package baekjoon.bfs;
+package baekjoon.dfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class BFS_2644 {
+public class DFS_2644 {
     /*
      *               1                       4
      *      2                3           5       6
