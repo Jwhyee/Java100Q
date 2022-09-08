@@ -76,6 +76,7 @@ public class BestAlbum {
 
     public static void main(String[] args) {
         BestAlbum ba = new BestAlbum();
+        // 테스트 케이스
         String[] genres = {"classic", "pop", "classic", "classic", "pop"};
         int[] plays = {500, 600, 150, 800, 2500};
         System.out.println(Arrays.toString(ba.solution(genres, plays)));
