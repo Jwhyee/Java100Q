@@ -24,8 +24,6 @@ public class Mbti {
             chooseType(survey[i], choices[i] - 4);
         }
 
-        System.out.println(resultMap);
-
         for(String resultType : result){
             String typeOne = String.valueOf(resultType.charAt(0));
             String typeTwo = String.valueOf(resultType.charAt(1));
@@ -58,8 +56,8 @@ public class Mbti {
         String[] survey = {"AN", "CF", "MJ", "RT", "NA"};
 //        String[] survey = {"TR", "RT", "TR"};
         int[] choice = {5, 3, 2, 7, 5};
-        System.out.println(m.solution(survey, choice));
 //        int[] choice = {7, 1, 3};
+        System.out.println(m.solution(survey, choice));
 
     }
 }
