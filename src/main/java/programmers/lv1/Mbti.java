@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Mbti {
+    // https://school.programmers.co.kr/learn/courses/30/lessons/118666
     public static Map<String, Integer> resultMap = new HashMap<>();
     public static String[] result = {"RT", "CF", "JM", "AN"};
 
