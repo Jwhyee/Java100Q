@@ -1,6 +1,11 @@
 package programmers.lv1;
 
 public class KnightWeapon {
+    /**
+     * @param number 기사단원의 수
+     * @param limit 공격력 제한 수치
+     * @param power 제한 수치 초과할 경우 공격력
+     * */
     public int solution(int number, int limit, int power) {
         int answer = 0;
         for (int i = 1; i <= number; i++) {
