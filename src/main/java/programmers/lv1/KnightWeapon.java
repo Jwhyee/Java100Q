@@ -5,8 +5,6 @@ public class KnightWeapon {
         int answer = 0;
         for (int i = 1; i <= number; i++) {
             int cnt = 0;
-            System.out.println("i = " + i);
-            System.out.println("sqrt = " + (int) Math.sqrt(i));
             for (int j = 1; j <= (int) Math.sqrt(i); j++) {
                 if (i == 1) {
                     cnt++;
@@ -18,11 +16,8 @@ public class KnightWeapon {
                     else cnt+=2;
                 }
             }
-            System.out.println("cnt = " + cnt);
             if (cnt > limit) answer+=power;
             else answer+=cnt;
-            System.out.println("answer = " + answer);
-            System.out.println("=====================");
         }
         return answer;
     }
