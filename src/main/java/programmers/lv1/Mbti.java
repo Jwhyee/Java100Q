@@ -55,6 +55,7 @@ public class Mbti {
     public static void main(String[] args) {
         Mbti m = new Mbti();
         String[] survey = {"AN", "CF", "MJ", "RT", "NA"};
+
 //        String[] survey = {"TR", "RT", "TR"};
         int[] choice = {5, 3, 2, 7, 5};
 //        int[] choice = {7, 1, 3};
