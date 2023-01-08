@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Arrays;
 
 public class SearchRank {
+
     static class Member{
         public String language;
         public String devSort;
@@ -21,23 +22,34 @@ public class SearchRank {
         }
     }
 
-    List<Member> memberList = new ArrayList<>();
+    // Member가 저장될 ArrayList
+    List<Member> memberRepository = new ArrayList<>();
 
+    /** List에 Member 데이터를 넣기 위한 메소드
+     * @param sArr info[i]를 공백 기준으로 자른 문자열 배열
+    */
     public void initData(String[] sArr) {
+        // 생성자를 통한 Memeber 객체 생성
         Member member = new Member(sArr[0], sArr[1], sArr[2], sArr[3], Integer.parseInt(sArr[4]));
-        memberList.add(member);
+
+        // List에 저장
+        memberRepository.add(member);
     }
 
+    /** query에 맞는 Member를 찾는 메소드
+     * @param qArr query[i]를 and와 공백을 기준으로 자른 문자열
+     * @return query에 맞는 Member 수 반환
+     */
     public int findCountByQuery(String[] qArr) {
+        // 배열의 각 데이터를 변수에 저장
         String q_language = qArr[0], q_devSort = qArr[1], q_career = qArr[2], q_soulFood = qArr[3];
         int q_score = Integer.parseInt(qArr[4]);
 
+        // query와 일치한 수를 나타내는 cnt 변수
         int cnt = 0;
 
-        for (Member m : memberList) {
-
-            Member m2 = new Member(q_language, q_devSort, q_career, q_soulFood, q_score);
-            System.out.println(m.equals(m2));
+        // List를 돌면서 조건에 부합한지 확인
+        for (Member m : memberRepository) {
 
             if (q_language.equals("-") || m.language.equals(q_language)) {
                 if (q_devSort.equals("-") || m.devSort.equals(q_devSort)) {
@@ -52,11 +64,11 @@ public class SearchRank {
             }
         }
 
-
         return cnt;
     }
 
     public int[] solution(String[] info, String[] query) {
+        // answer의 크기는 query의 크기와 동일함
         int[] answer = new int[query.length];
 
         // List에 데이터 삽입
