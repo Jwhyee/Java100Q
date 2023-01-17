@@ -1,7 +1,5 @@
 package programmers.lv1;
 
-import programmers.kakao2023.Solution1;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
