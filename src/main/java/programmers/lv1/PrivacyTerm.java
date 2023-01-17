@@ -16,21 +16,27 @@ public class PrivacyTerm {
         LocalDate parseToday = LocalDate.parse(today, formatter);
         return parseToday.isAfter(accessDay.plusMonths(termsMap.get(sort))) || parseToday.isEqual(accessDay.plusMonths(termsMap.get(sort)));
     }
+
+    public void savePrivacyTerm(String term) {
+        String termSort = term.split(" ")[0];
+        int termMonth = Integer.parseInt(term.split(" ")[1]);
+        termsMap.put(termSort, termMonth);
+    }
+
     public int[] solution(String today, String[] terms, String[] privacies) {
         List<Integer> answerList = new ArrayList<>();
         for (String term : terms) {
-            String termSort = term.split(" ")[0];
-            int termMonth = Integer.parseInt(term.split(" ")[1]);
-            termsMap.put(termSort, termMonth);
+            savePrivacyTerm(term);
         }
+
         for (int i = 0; i < privacies.length; i++) {
             LocalDate accessDay = LocalDate.parse(privacies[i].split(" ")[0], formatter);
-            System.out.println(accessDay);
             String termSort = privacies[i].split(" ")[1];
             if (isPassedDay(today, accessDay, termSort)) {
                 answerList.add(i + 1);
             }
         }
+
         int[] answer = new int[answerList.size()];
         for (int i = 0; i < answerList.size(); i++) {
             answer[i] = answerList.get(i);
