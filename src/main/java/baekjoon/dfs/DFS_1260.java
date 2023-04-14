@@ -38,7 +38,7 @@ public class DFS_1260 {
         dfs(V);
     }
 
-    /*public static void dfs(int point) {
+    public static void dfs(int point) {
         // 현재 노드 방문 처리 및 출력
         visited[point] = true;
         System.out.print(point + " ");
@@ -55,10 +55,10 @@ public class DFS_1260 {
             }
         }
 
-    }*/
+    }
 
     // 스택
-	private static void dfs(int point) {
+	/*private static void dfs(int point) {
         // 그래프의 끝 지점
 		int n = graph.length - 1;
 
@@ -89,5 +89,5 @@ public class DFS_1260 {
 			}
 		}
 
-	}
+	}*/
 }
