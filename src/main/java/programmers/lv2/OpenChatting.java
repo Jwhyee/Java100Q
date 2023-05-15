@@ -1,32 +1,42 @@
 package programmers.lv2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class OpenChatting {
+    private static final String ENTER = "_님이 들어왔습니다.";
+    private static final String LEAVE = "_님이 나갔습니다.";
     public static String[] solution(String[] record) {
-        Map<String, String> userMap = new HashMap<>();
-        List<String> statusList = new ArrayList<>();
+        HashMap<String, String> userMap = new HashMap<>();
+        ArrayList<String> statusList = new ArrayList<>();
+        String status = "";
+        String uid = "";
 
         for (String info : record) {
             String[] userInfo = info.split(" ");    // 0 : Enter 1 : uid1234 2: Muzi
-            if (userInfo[0].equals("Enter")) {
-                statusList.add(userInfo[1] + "님 Enter");
-                userMap.put(userInfo[1], userInfo[2]);
-            } else if (userInfo[0].equals("Change")) {
-                userMap.put(userInfo[1], userInfo[2]);
-            } else {
-                statusList.add(userInfo[1] + "님 Leave");
+            status = userInfo[0];
+            uid = userInfo[1];
+
+            switch (status) {
+                case "Enter" -> {
+                    statusList.add(uid + ENTER);
+                    userMap.put(uid, userInfo[2]);
+                }
+                case "Change" -> {
+                    userMap.put(uid, userInfo[2]);
+                }
+                default -> {
+                    statusList.add(uid + LEAVE);
+                }
             }
         }
 
         String[] answer = new String[statusList.size()];
 
         for (int i = 0; i < statusList.size(); i++) {
-            if (statusList.get(i).contains("Enter")) {
-                answer[i] = userMap.get(statusList.get(i).replaceAll("님 Enter", "")) + "님이 들어왔습니다.";
-            } else {
-                answer[i] = userMap.get(statusList.get(i).replaceAll("님 Leave", "")) + "님이 나갔습니다.";
-            }
+            String[] memberStatus = statusList.get(i).split("_");
+            answer[i] = userMap.get(memberStatus[0]) + memberStatus[1];
         }
         return answer;
     }
