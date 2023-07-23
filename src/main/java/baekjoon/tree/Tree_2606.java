@@ -6,7 +6,13 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class TREE_2606 {
+/**
+ * 제목 : 바이러스(실버3)
+ * 링크 : https://www.acmicpc.net/problem/2606
+ * 메모리 :
+ * 시간 :
+ */
+public class Tree_2606 {
     static int sum = 0;
     static boolean[] visited;
     public static void main(String[] args) throws IOException {
@@ -56,13 +62,11 @@ public class TREE_2606 {
 
     public static class Node {
         int id;
-        int count;
         Node leftNode;
         Node rightNode;
 
         public Node(int id) {
             this.id = id;
-            this.count = 0;
             this.leftNode = null;
             this.rightNode = null;
         }
@@ -75,7 +79,6 @@ public class TREE_2606 {
             } else {
                 return;
             }
-            count++;
         }
     }
 }
