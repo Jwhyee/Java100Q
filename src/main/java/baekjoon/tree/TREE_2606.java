@@ -77,15 +77,5 @@ public class TREE_2606 {
             }
             count++;
         }
-
-        public void addLeft(Node node) {
-            this.leftNode = node;
-            count++;
-        }
-
-        public void addRight(Node node) {
-            this.rightNode = node;
-            count++;
-        }
     }
 }
