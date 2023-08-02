@@ -6,9 +6,6 @@ import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 
 /**
-* 문제 링크 :
-* */
-/**
  * 문제 이름(난이도) : 금고털이(LV2)
  * 시간 : 645 ms
  * 메모리 : 84.06 MB
