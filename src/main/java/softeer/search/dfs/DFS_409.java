@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/**
+ * 문제 이름(난이도) : 장애물 인식 프로그램(LV2)
+ * 시간 : 81 ms
+ * 메모리 : 10.68 MB
+ * 링크 : https://softeer.ai/practice/info.do?idx=1&eid=409&sw_prbl_sbms_sn=232807
+ */
 public class DFS_409 {
     static int[][] map;
     static boolean[][] visited;
