@@ -1,4 +1,4 @@
-package softeer;
+package softeer.queue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
