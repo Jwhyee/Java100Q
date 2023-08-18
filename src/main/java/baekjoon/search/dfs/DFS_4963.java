@@ -1,11 +1,11 @@
-package baekjoon.search.bfs;
+package baekjoon.search.dfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BFS_4963 {
+public class DFS_4963 {
     // 지도의 높이, 너비, 섬의 수
     static int h, w, count;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -42,7 +42,7 @@ public class BFS_4963 {
                 for (int j = 0; j < w; j++) {
                     // 만약 지도 좌표에 1이 있으며 방문하지 않은 노드면 bfs 진행
                     if (squareMap[i][j] == 1 && !visited[i][j]) {
-                        bfs(i, j);
+                        dfs(i, j);
                         count++;
                     }
                 }
@@ -63,7 +63,7 @@ public class BFS_4963 {
         }
     }
 
-    public static void bfs(int x, int y) {
+    public static void dfs(int x, int y) {
         // 넘겨받은 좌표에 방문 도장 찍기
         visited[x][y] = true;
 
@@ -76,7 +76,7 @@ public class BFS_4963 {
 
             // 지도의 범위 안에 있고, 다음 방문할 노드가 땅이며, 방문하지 않았다면 bfs를 다시 진행
             if (nx >= 0 && nx < h && ny >= 0 && ny < w) {
-                if(squareMap[nx][ny] == 1 && !visited[nx][ny]) bfs(nx, ny);
+                if(squareMap[nx][ny] == 1 && !visited[nx][ny]) dfs(nx, ny);
             }
         }
     }

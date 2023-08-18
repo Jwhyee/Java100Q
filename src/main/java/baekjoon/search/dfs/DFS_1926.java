@@ -1,4 +1,4 @@
-package baekjoon.search.bfs;
+package baekjoon.search.dfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
  * 메모리: 52092 KB
  * 링크 : https://www.acmicpc.net/problem/1926
  * */
-public class BFS_1926 {
+public class DFS_1926 {
     static int[][] map;
     static boolean[][] visited;
     static int h, w;
@@ -36,7 +36,7 @@ public class BFS_1926 {
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 if (!visited[i][j] && map[i][j] != 0) {
-                    bfs(i, j);
+                    dfs(i, j);
                     count++;
                     max = Math.max(max, temp);
                     temp = 0;
@@ -48,7 +48,7 @@ public class BFS_1926 {
         System.out.println(max);
     }
 
-    public static void bfs(int y, int x) {
+    public static void dfs(int y, int x) {
         visited[y][x] = true;
         temp++;
 
@@ -58,7 +58,7 @@ public class BFS_1926 {
 
             if(ny >= 0 && ny < h && nx >= 0 && nx < w) {
                 if (!visited[ny][nx] && map[ny][nx] != 0) {
-                    bfs(ny, nx);
+                    dfs(ny, nx);
                 }
             }
         }

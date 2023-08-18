@@ -1,10 +1,10 @@
-package baekjoon.search.bfs;
+package baekjoon.search.dfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BFS_10026 {
+public class DFS_10026 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static String[][] nwPicture, wPicture;
     static boolean[][] nwVisited, wVisited;
@@ -43,25 +43,25 @@ public class BFS_10026 {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (!nwVisited[i][j]) {
-                    bfs(i, j, nwPicture[i][j], nwVisited, nwPicture);
+                    dfs(i, j, nwPicture[i][j], nwVisited, nwPicture);
                     notColorWeaknessCount++;
                 }
                 if (!wVisited[i][j]) {
-                    bfs(i, j, wPicture[i][j], wVisited, wPicture);
+                    dfs(i, j, wPicture[i][j], wVisited, wPicture);
                     colorWeaknessCount++;
                 }
             }
         }
     }
 
-    public static void bfs(int x, int y, String color, boolean[][] visited, String[][] picture) {
+    public static void dfs(int x, int y, String color, boolean[][] visited, String[][] picture) {
         visited[x][y] = true;
         for (int i = 0; i < 4; i++) {
             int nx = dx[i] + x;
             int ny = dy[i] + y;
             if (nx >= 0 && nx < N && ny >= 0 && ny < N) {
                 if (picture[nx][ny].equals(color) && !visited[nx][ny]) {
-                    bfs(nx, ny, color, visited, picture);
+                    dfs(nx, ny, color, visited, picture);
                 }
             }
         }
