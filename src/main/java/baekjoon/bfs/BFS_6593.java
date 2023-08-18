@@ -3,16 +3,21 @@ package baekjoon.bfs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 문제 이름 : 상범 빌딩
+ * 메모리 : 15756 KB
+ * 시간 : 140 ms
+ * 링크 : https://www.acmicpc.net/problem/6593
+ * */
 public class BFS_6593 {
     static int[][][] map;
     static boolean[][][] visited;
-    static int[] dx = {1, 0, -1, 0};
-    static int[] dy = {0, 1, 0, -1};
-    static int[] dz = {0, -1, 1};
+    static int[] dx = {1, 0, -1, 0, 0, 0};
+    static int[] dy = {0, 1, 0, -1, 0, 0};
+    static int[] dz = {0, 0, 0, 0, 1, -1};
     static int L, R, C;
     static Queue<Node> nodeQueue = new LinkedList<>();
     static Node exitNode;
@@ -70,29 +75,18 @@ public class BFS_6593 {
                 return cur.cost;
             }
 
-            for (int i = 0; i < 3; i++) {
-                int nz = cur.z + dz[i];
+            for (int j = 0; j < 6; j++) {
+                int nx = cur.x + dx[j];
+                int ny = cur.y + dy[j];
+                int nz = cur.z + dz[j];
 
-                if (nz >= 0 && nz < L) {
-
-                    for (int j = 0; j < 4; j++) {
-                        int nx = cur.x + dx[j];
-                        int ny = cur.y + dy[j];
-
-                        if (nx >= 0 && nx < C && ny >= 0 && ny < R) {
-                            if (map[nz][ny][nx] == 0 && !visited[nz][ny][nx]) {
-                                if (nz != cur.z) {
-                                    map[nz][ny][nx] = cur.cost + 2;
-                                    nodeQueue.offer(new Node(nz, nx, ny, cur.cost + 2));
-                                } else {
-                                    map[nz][ny][nx] = cur.cost + 1;
-                                    nodeQueue.offer(new Node(nz, nx, ny, cur.cost + 1));
-                                }
-                            }
-                        }
-
+                if (nz >= 0 && nz < L && nx >= 0 && nx < C && ny >= 0 && ny < R) {
+                    if (map[nz][ny][nx] == 0 && !visited[nz][ny][nx]) {
+                        map[nz][ny][nx] = cur.cost + 1;
+                        nodeQueue.offer(new Node(nz, nx, ny, cur.cost + 1));
                     }
                 }
+
             }
 
         }
