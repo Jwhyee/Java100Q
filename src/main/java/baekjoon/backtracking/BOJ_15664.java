@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
- * 제목 : N과 M(9) [실버2]
- * 시간 : 124 ms
- * 메모리 : 18144 KB
- * 링크 : https://www.acmicpc.net/problem/15663
+ * 제목 : N과 M(10) [실버2]
+ * 시간 : 1 ms
+ * 메모리 : 1 KB
+ * 링크 : https://www.acmicpc.net/problem/15664
  * */
-public class BOJ_15663 {
+public class BOJ_15664 {
     static int N, M, max;
     static boolean[] visited;
     static int[] values, numArr;
@@ -64,7 +64,9 @@ public class BOJ_15663 {
                 values[depth] = numArr[i];
                 before = numArr[i];
                 backDfs( depth + 1);
-                visited[i] = false;
+                for (int j = i + 1; j < N; j++) {
+                    visited[j] = false;
+                }
             }
         }
 
