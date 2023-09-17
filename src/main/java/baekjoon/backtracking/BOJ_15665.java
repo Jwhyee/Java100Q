@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
- * 제목 : N과 M(11) [실버2]
- * 시간 : 300 ms
- * 메모리 : 45916 KB
+ * 제목 : N과 M(12) [실버2]
+ * 시간 : 92 ms
+ * 메모리 : 13260 KB
  * 링크 : https://www.acmicpc.net/problem/15665
  * */
 public class BOJ_15665 {
@@ -40,12 +40,12 @@ public class BOJ_15665 {
 
         br.close();
 
-        backDfs(0);
+        backDfs(0, 0);
 
         System.out.println(sb.toString());
     }
 
-    private static void backDfs(int depth) {
+    private static void backDfs(int at, int depth) {
         if (depth == M) {
             for (int value : values) {
                 sb.append(value).append(" ");
@@ -55,13 +55,16 @@ public class BOJ_15665 {
         }
 
         int before = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = at; i < N; i++) {
             if (before != numArr[i]) {
                 visited[i] = true;
                 values[depth] = numArr[i];
                 before = numArr[i];
-                backDfs( depth + 1);
-                visited[i] = false;
+                backDfs(i, depth + 1);
+
+                for (int j = i + 1; j < N; j++) {
+                    visited[j] = false;
+                }
             }
         }
 
