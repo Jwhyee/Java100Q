@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
  * 제목 : N과 M(4) [실버3]
  * 시간 : 92 ms
  * 메모리 : 13360 KB
- * 링크 : https://www.acmicpc.net/problem/15651
+ * 링크 : https://www.acmicpc.net/problem/15652
  * */
 public class BOJ_15652 {
     static int N, M;
