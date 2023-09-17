@@ -8,8 +8,8 @@ import java.util.StringTokenizer;
 
 /**
  * 제목 : N과 M(10) [실버2]
- * 시간 : 1 ms
- * 메모리 : 1 KB
+ * 시간 : 76 ms
+ * 메모리 : 11568 KB
  * 링크 : https://www.acmicpc.net/problem/15664
  * */
 public class BOJ_15664 {
@@ -40,12 +40,12 @@ public class BOJ_15664 {
 
         br.close();
 
-        backDfs(0);
+        backDfs(0, 0);
 
         System.out.println(sb.toString());
     }
 
-    private static void backDfs(int depth) {
+    private static void backDfs(int at, int depth) {
         if (depth == M) {
             for (int value : values) {
                 sb.append(value).append(" ");
@@ -53,8 +53,9 @@ public class BOJ_15664 {
             sb.append("\n");
             return;
         }
+
         int before = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = at; i < N; i++) {
             if (visited[i]) {
                 continue;
             }
@@ -63,10 +64,8 @@ public class BOJ_15664 {
                 visited[i] = true;
                 values[depth] = numArr[i];
                 before = numArr[i];
-                backDfs( depth + 1);
-                for (int j = i + 1; j < N; j++) {
-                    visited[j] = false;
-                }
+                backDfs( i + 1, depth + 1);
+                visited[i] = false;
             }
         }
 
