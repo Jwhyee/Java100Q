@@ -1,20 +1,9 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
-class Node {
-    int x, y;
-
-    public Node(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
 
 public class Main {
     static int N, M, min;
@@ -22,7 +11,6 @@ public class Main {
     static boolean[] visited;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -53,9 +41,7 @@ public class Main {
         visited = new boolean[chickenList.size()];
         backTracking(0, 0);
 
-        bw.append(min + "\n");
-        bw.flush();
-        bw.close();
+        System.out.println(min);
         br.close();
     }
 
@@ -70,8 +56,9 @@ public class Main {
                 int temp = Integer.MAX_VALUE;
                 for (int j = 0; j < chickenList.size(); j++) {
                     if (visited[j]) {
-                        int result = (Math.abs(homeList.get(i).x - chickenList.get(j).x)
-                                + Math.abs(homeList.get(i).y - chickenList.get(j).y));
+                        int dx = Math.abs(homeList.get(i).x - chickenList.get(j).x);
+                        int dy = Math.abs(homeList.get(i).y - chickenList.get(j).y);
+                        int result = dx + dy;
                         temp = Math.min(temp, result);
                     }
                 }
@@ -87,6 +74,15 @@ public class Main {
             backTracking(i + 1, cnt + 1);
 
             visited[i] = false;
+        }
+    }
+
+    static class Node {
+        int x, y;
+
+        public Node(int x, int y) {
+            this.x = x;
+            this.y = y;
         }
     }
 }
