@@ -7,8 +7,8 @@ import java.util.StringTokenizer;
 
 /**
  * 문제 이름(난이도) : 유니의 편지 쓰기 (GOL5)
- * 시간 : . ms
- * 메모리 : . KB
+ * 시간 : 444 ms
+ * 메모리 : 69200 KB
  * 링크 : https://www.acmicpc.net/problem/28070
  */
 public class Main {
@@ -17,9 +17,11 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = Integer.parseInt(br.readLine());
         int[] dp = new int[120002];
+        int N = Integer.parseInt(br.readLine());
+        
         StringTokenizer st;
+        
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int s = parsing(st.nextToken());
@@ -27,10 +29,10 @@ public class Main {
 
             int e = parsing(st.nextToken());
             dp[e + 1]--;
-
         }
 
         int max = 0, y = 0, m = 0;
+        
         for (int i = 24000; i < 120001; i++) {
             dp[i] += dp[i - 1];
             if (dp[i] > max) {
@@ -52,18 +54,18 @@ public class Main {
             sb.append(y).append('-').append(m);
         }
 
-        bw.append(sb.toString()).append("\n");
+        bw.append(sb.toString());
         st = null;
         bw.flush();
         bw.close();
         br.close();
-
     }
 
     private static int parsing(String s) {
         StringTokenizer st = new StringTokenizer(s, "-");
         int y = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
+        st = null;
 
         return (y * 12) + m;
     }
