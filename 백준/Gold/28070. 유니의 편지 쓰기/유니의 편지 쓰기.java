@@ -7,8 +7,8 @@ import java.util.StringTokenizer;
 
 /**
  * 문제 이름(난이도) : 유니의 편지 쓰기 (GOL5)
- * 시간 : 444 ms
- * 메모리 : 69200 KB
+ * 시간 : 440 ms
+ * 메모리 : 68496 KB
  * 링크 : https://www.acmicpc.net/problem/28070
  */
 public class Main {
@@ -17,30 +17,32 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int[] dp = new int[120002];
+        int[] arr = new int[120002];
         int N = Integer.parseInt(br.readLine());
-        
+
         StringTokenizer st;
-        
+
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int s = parsing(st.nextToken());
-            dp[s]++;
+            arr[s]++;
 
             int e = parsing(st.nextToken());
-            dp[e + 1]--;
+            arr[e + 1]--;
         }
 
-        int max = 0, y = 0, m = 0;
-        
+        int max = 0, d = 0;
+
         for (int i = 24000; i < 120001; i++) {
-            dp[i] += dp[i - 1];
-            if (dp[i] > max) {
-                max = dp[i];
-                y = i / 12;
-                m = i % 12;
+            arr[i] += arr[i - 1];
+            if (arr[i] > max) {
+                max = arr[i];
+                d = i;
             }
         }
+
+        int y = d / 12;
+        int m = d % 12;
 
         if (m == 0) {
             y--;
