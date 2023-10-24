@@ -4,14 +4,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-/**
- * 문제 이름(난이도) : 트리의 지름 (SIL4)
- * 시간 : 3012 ms
- * 메모리 : 129188 KB
- * 링크 : https://www.acmicpc.net/problem/1967
- */
 public class Main {
-    static int N;
+    static int N, leafNode, result;
     static ArrayList<Node>[] lists;
     static boolean[] visited;
     public static void main(String[] args) throws IOException {
@@ -36,34 +30,38 @@ public class Main {
             lists[parent].add(new Node(child, point));
         }
 
+        visited = new boolean[N + 1];
+
         // 최대값 탐색
-        int max = Integer.MIN_VALUE;
+        dfs(1, 0);
 
-        for (int i = 1; i <= N; i++) {
-            if (lists[i].size() == 1) {
-                // 방문 배열 초기화 후 최대값 탐색
-                visited = new boolean[N + 1];
-                max = Math.max(dfs(i), max);
-            }
-
+        for (int i = 0; i <= N; i++) {
+            visited[i] = false;
         }
 
-        System.out.println(max == Integer.MIN_VALUE ? 0 : max);
+        dfs(leafNode, 0);
+
+        System.out.println(result);
+
+        br.close();
     }
 
-    private static int dfs(int nodeNum) {
+    private static void dfs(int nodeNum, int sum) {
         // 노드 방문 처리
         visited[nodeNum] = true;
-        int maxSum = 0;
 
         for (Node node : lists[nodeNum]) {
+            // 방문하지 않은 자식 노드 탐색
             if (!visited[node.linked]) {
-                int s = dfs(node.linked) + node.point;
-                maxSum = Math.max(maxSum, s);
+                dfs(node.linked, sum + node.point);
             }
         }
 
-        return maxSum;
+        if (result < sum) {
+            result = sum;
+            leafNode = nodeNum;
+        }
+
     }
 
     private static class Node {
