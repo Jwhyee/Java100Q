@@ -4,6 +4,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+/**
+ * 문제 이름(난이도) : 트리의 지름 (SIL4)
+ * 시간 : 3012 ms
+ * 메모리 : 129188 KB
+ * 링크 : https://www.acmicpc.net/problem/1967
+ */
 public class Main {
     static int N;
     static ArrayList<Node>[] lists;
@@ -13,13 +19,13 @@ public class Main {
         StringTokenizer st;
         N = Integer.parseInt(br.readLine());
 
+        // 그래프 선언 및 초기화
         lists = new ArrayList[N + 1];
-        visited = new boolean[N + 1];
-
         for (int i = 0; i <= N; i++) {
             lists[i] = new ArrayList<>();
         }
 
+        // 부모 및 자식 노드 그래프에 추가
         for (int i = 1; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int parent = Integer.parseInt(st.nextToken());
@@ -30,17 +36,23 @@ public class Main {
             lists[parent].add(new Node(child, point));
         }
 
+        // 최대값 탐색
         int max = Integer.MIN_VALUE;
 
         for (int i = 1; i <= N; i++) {
-            visited = new boolean[N + 1];
-            max = Math.max(dfs(i), max);
+            if (lists[i].size() == 1) {
+                // 방문 배열 초기화 후 최대값 탐색
+                visited = new boolean[N + 1];
+                max = Math.max(dfs(i), max);
+            }
+
         }
 
-        System.out.println(max);
+        System.out.println(max == Integer.MIN_VALUE ? 0 : max);
     }
 
     private static int dfs(int nodeNum) {
+        // 노드 방문 처리
         visited[nodeNum] = true;
         int maxSum = 0;
 
