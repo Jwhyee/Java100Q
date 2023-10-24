@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int N, leafNode, result;
-    static ArrayList<Node>[] lists;
+    static ArrayList<int[]>[] lists;
     static boolean[] visited;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,8 +26,8 @@ public class Main {
             int child = Integer.parseInt(st.nextToken());
             int point = Integer.parseInt(st.nextToken());
 
-            lists[child].add(new Node(parent, point));
-            lists[parent].add(new Node(child, point));
+            lists[child].add(new int[]{parent, point});
+            lists[parent].add(new int[]{child, point});
         }
 
         visited = new boolean[N + 1];
@@ -35,9 +35,7 @@ public class Main {
         // 최대값 탐색
         dfs(1, 0);
 
-        for (int i = 0; i <= N; i++) {
-            visited[i] = false;
-        }
+        visited = new boolean[N + 1];
 
         dfs(leafNode, 0);
 
@@ -50,26 +48,20 @@ public class Main {
         // 노드 방문 처리
         visited[nodeNum] = true;
 
-        for (Node node : lists[nodeNum]) {
+        for (int[] node : lists[nodeNum]) {
             // 방문하지 않은 자식 노드 탐색
-            if (!visited[node.linked]) {
-                dfs(node.linked, sum + node.point);
+            if (!visited[node[0]]) {
+                dfs(node[0], sum + node[1]);
             }
         }
 
+        // 거리가 결과 값보다 더 클 경우(마지막 노드까지 탐색한 경우)
         if (result < sum) {
+            // 최대값 갱신
             result = sum;
+            // 리프노드 지정
             leafNode = nodeNum;
         }
 
-    }
-
-    private static class Node {
-        int linked, point;
-
-        public Node(int linked, int point) {
-            this.linked = linked;
-            this.point = point;
-        }
     }
 }
