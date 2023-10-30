@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -44,7 +43,8 @@ public class Main {
     private static void dfs(int cur, int point) {
         visited[cur] = true;
 
-        for (Node node : graph[cur]) {
+        for (int i = 0; i < graph[cur].size(); i++) {
+            Node node = graph[cur].get(i);
             if (!visited[node.num]) {
                 dfs(node.num, point + node.point);
             }
