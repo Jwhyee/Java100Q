@@ -7,12 +7,11 @@ import java.util.StringTokenizer;
 public class Main {
     static ArrayList<Node>[] graph;
     static boolean[] visited;
-    static int C, max, leaf;
+    static int max, leaf;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int T = Integer.parseInt(br.readLine());
-        C = T;
 
         graph = new ArrayList[T + 1];
         visited = new boolean[T + 1];
@@ -30,11 +29,12 @@ public class Main {
                 graph[parent].add(new Node(child, point));
             }
         }
-        dfs(1, 0);
 
+        dfs(1, 0);
 
         visited = new boolean[visited.length];
         max = 0;
+
         dfs(leaf, 0);
 
         System.out.println(max);
@@ -63,5 +63,6 @@ public class Main {
             this.num = num;
             this.point = point;
         }
+
     }
 }
