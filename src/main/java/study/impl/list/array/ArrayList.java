@@ -1,15 +1,19 @@
-package study.impl.arraylist;
+package study.impl.list.array;
 
-public class ArrayList<T> {
+import study.impl.list.List;
+
+import java.util.Arrays;
+
+public class ArrayList<E> implements List<E> {
     private Object[] datum;
     private int size;
 
-    ArrayList() {
+    public ArrayList() {
         datum = new Object[2];
         size = 0;
     }
 
-    public void add(Object data) {
+    public void add(E data) {
         sizeUpIfFull();
         datum[size] = data;
         size++;
@@ -35,8 +39,8 @@ public class ArrayList<T> {
         return size == datum.length;
     }
 
-    public T get(int idx) {
-        return (T)datum[idx];
+    public E get(int idx) {
+        return (E)datum[idx];
     }
 
     public void removeAt(int idx) {
@@ -46,18 +50,19 @@ public class ArrayList<T> {
         size--;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        for (int i = 0; i < size; i++) {
+            sb.append(datum[i]).append(", ");
+        }
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append(']');
+        return sb.toString();
+    }
+
     public int size() {
         return size;
-    }
-
-    public int getArrayLength() {
-        return datum.length;
-    }
-
-    public void showAllValues() {
-        System.out.println("== 전체 데이터 출력 ==");
-        for (int i = 0; i < size; i++) {
-            System.out.println(i + " : " + datum[i]);
-        }
     }
 }
