@@ -18,6 +18,7 @@ private lateinit var red: Pair<Int, Int>
 private lateinit var blue: Pair<Int, Int>
 // 목표 y, x
 private lateinit var end: Pair<Int, Int>
+
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val st = StringTokenizer(readLine())
     n = st.nextToken().toInt()
@@ -77,9 +78,6 @@ fun go() {
         for (i in 0 until 4) {
             var (nry, nrx) = cry to crx
             var (nby, nbx) = cby to cbx
-            var (redFlag, blueFlag) = false to false
-            var (redEndFlag, blueEndFlag) = false to false
-
 
             while (true) {
                 nry += dy[i]
