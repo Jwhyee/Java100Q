@@ -9,7 +9,6 @@ class Solution {
         int hourSum = (Integer.parseInt(outTimeArr[0]) - Integer.parseInt(inTimeArr[0])) * 60;
         int minuteSum = Integer.parseInt(outTimeArr[1]) - Integer.parseInt(inTimeArr[1]);
         int timeSum = (hourSum + minuteSum);
-//        System.out.println("hourSum = " + hourSum + " / " + "minuteSum = " + minuteSum + " / " + "timeSum = " + timeSum);
         return timeSum;
     }
     public int getParkingFees(int[] fees, int timeSum) {
@@ -50,7 +49,6 @@ class Solution {
             }
         }
         for (String carNum : answerMap.keySet()) {
-//            System.out.println("carNum = " + carNum + " / fees = " + answerMap.get(carNum));
             int parkingFees = getParkingFees(fees, answerMap.get(carNum));
             answerMap.put(carNum, parkingFees);
         }
