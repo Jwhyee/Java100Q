@@ -1,8 +1,15 @@
 import java.util.Stack
+import java.util.StringTokenizer
 
 fun main() = with(System.`in`.bufferedReader()) {
     val n = readLine().toInt()
-    val list = readLine().split(" ").map { it.toInt() }.toMutableList()
+    val st = StringTokenizer(readLine())
+    val list = mutableListOf<Int>()
+
+    while (st.hasMoreTokens()) {
+        list += st.nextToken().toInt()
+    }
+
     val stack = Stack<Int>()
 
     for (i in 0 until list.size) {
@@ -12,7 +19,7 @@ fun main() = with(System.`in`.bufferedReader()) {
             list[stack.pop()] = list[i]
         }
         // 스택에 인덱스 넣기
-        stack.push(i)
+        stack += i
     }
 
     // 스택에 처리되지 않은 인덱스가 남아있으면, -1로 채우기
